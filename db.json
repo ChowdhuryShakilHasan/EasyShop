@@ -1,4 +1,22 @@
 {
+  "users": [
+  {
+    "id": "1",
+    "email": "admin@easyshop.com",
+    "password": "admin123",
+    "name": "Admin User",
+    "role": "admin"
+  },
+  {
+    "id": "2",
+    "email": "staff@easyshop.com",
+    "password": "staff123",
+    "name": "Staff User",
+    "role": "staff"
+  }
+],
+
+
   "products": [
     {
       "id": "1",
@@ -51,4 +69,6 @@
       "joined": "2025-11-10"
     }
   ]
+  
 }
+

@@ -2,14 +2,27 @@
 
 import { Search, Bell, ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { logout } from "../../redux/slices/authSlice";
+import { RootState } from "../../redux/store";
 
 export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/login");
+  };
+
+  const initial = user?.name?.charAt(0).toUpperCase() ?? "?";
 
   return (
     <header className="h-16 flex items-center justify-between px-4 md:px-6 border-b border-gray-200 bg-white sticky top-0 z-20">
       <div className="flex items-center gap-3">
-        {/* Hamburger — only visible below md breakpoint */}
         <button
           onClick={onMenuClick}
           className="md:hidden p-2 rounded-lg hover:bg-gray-100"
@@ -17,7 +30,6 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           <Menu size={20} />
         </button>
 
-        {/* Search bar */}
         <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2 w-64">
           <Search size={16} className="text-gray-400" />
           <input
@@ -34,27 +46,33 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
         </button>
 
-        {/* User dropdown */}
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className="flex items-center gap-2"
           >
             <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-semibold">
-              A
+              {initial}
             </div>
             <ChevronDown size={16} className="text-gray-500" />
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-30">
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-30">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <p className="text-sm font-medium text-gray-900">{user?.name}</p>
+                <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
+              </div>
               <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                 Profile
               </button>
               <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                 Settings
               </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+              <button
+                onClick={handleLogout}
+                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+              >
                 Logout
               </button>
             </div>

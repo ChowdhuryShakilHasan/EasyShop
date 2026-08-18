@@ -1,8 +1,51 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: "admin" | "staff";
+}
+
+interface LoginRequest {
+  email: string;
+  password: string;
+}
+
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
   tagTypes: ["Product", "Order", "Customer"],
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    login: builder.mutation<User, LoginRequest>({
+      async queryFn({ email, password }, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery(
+          `/users?email=${email}&password=${password}`
+        );
+
+        if (result.error) {
+          return { error: result.error };
+        }
+
+
+
+
+const users = result.data as (User & { password: string })[];
+
+        if (users.length === 0) {
+          return {
+            error: { status: 401, data: "Invalid email or password" },
+          };
+        }
+
+        const { id, email: userEmail, name, role } = users[0];
+        return { data: { id, email: userEmail, name, role } };
+
+
+
+      },
+    }),
+  }),
 });
+
+export const { useLoginMutation } = apiSlice;
