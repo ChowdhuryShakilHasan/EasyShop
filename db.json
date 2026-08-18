@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Wireless Mouse",
+      "category": "Electronics",
+      "price": 25.99,
+      "stock": 120,
+      "status": "active",
+      "image": ""
+    },
+    {
+      "id": "2",
+      "name": "Mechanical Keyboard",
+      "category": "Electronics",
+      "price": 79.99,
+      "stock": 8,
+      "status": "active",
+      "image": ""
+    },
+    {
+      "id": "3",
+      "name": "Cotton T-Shirt",
+      "category": "Apparel",
+      "price": 15.5,
+      "stock": 0,
+      "status": "inactive",
+      "image": ""
+    }
+  ],
+  "orders": [
+    {
+      "id": "101",
+      "customerId": "1",
+      "date": "2026-08-01",
+      "total": 105.98,
+      "paymentStatus": "paid",
+      "orderStatus": "processing",
+      "items": [
+        { "productId": "1", "quantity": 2, "price": 25.99 },
+        { "productId": "2", "quantity": 1, "price": 79.99 }
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Rafiq Islam",
+      "email": "rafiq@example.com",
+      "phone": "01710000000",
+      "joined": "2025-11-10"
+    }
+  ]
+}
