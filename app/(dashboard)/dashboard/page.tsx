@@ -1,12 +1,77 @@
+"use client";
+
+import { DollarSign, ShoppingCart, Users, Receipt } from "lucide-react";
 import PageContainer from "../../../components/layout/PageContainer";
+import KpiCard from "../../../components/dashboard/KpiCard";
+import RevenueChart from "../../../components/dashboard/RevenueChart";
+import CategoryChart from "../../../components/dashboard/CategoryChart";
+import RecentOrders from "../../../components/dashboard/RecentOrders";
+import LowStock from "../../../components/dashboard/LowStock";
+import {
+  useGetOrdersQuery,
+  useGetProductsQuery,
+  useGetCustomersQuery,
+} from "../../../redux/slices/apiSlice";
 
 export default function DashboardPage() {
+  const { data: orders, isLoading: ordersLoading } = useGetOrdersQuery();
+  const { data: products, isLoading: productsLoading } = useGetProductsQuery();
+  const { data: customers, isLoading: customersLoading } = useGetCustomersQuery();
+
+  if (ordersLoading || productsLoading || customersLoading) {
+    return (
+      <PageContainer title="Dashboard" subtitle="Overview of your store">
+        <p className="text-gray-500 text-sm">Loading...</p>
+      </PageContainer>
+    );
+  }
+
+  const safeOrders = orders ?? [];
+  const safeProducts = products ?? [];
+  const safeCustomers = customers ?? [];
+
+  const totalRevenue = safeOrders.reduce((sum, o) => sum + o.total, 0);
+  const totalOrders = safeOrders.length;
+  const totalCustomers = safeCustomers.length;
+  const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+
   return (
     <PageContainer title="Dashboard" subtitle="Overview of your store">
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <p className="text-gray-600">
-          Shell is working. KPI cards and charts go here on Day 4.
-        </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <KpiCard
+          label="Total Revenue"
+          value={`$${totalRevenue.toFixed(2)}`}
+          trend={12}
+          icon={DollarSign}
+        />
+        <KpiCard
+          label="Total Orders"
+          value={totalOrders.toString()}
+          trend={8}
+          icon={ShoppingCart}
+        />
+        <KpiCard
+          label="Total Customers"
+          value={totalCustomers.toString()}
+          trend={5}
+          icon={Users}
+        />
+        <KpiCard
+          label="Avg. Order Value"
+          value={`$${avgOrderValue.toFixed(2)}`}
+          trend={-3}
+          icon={Receipt}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+        <RevenueChart orders={safeOrders} />
+        <CategoryChart products={safeProducts} />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <RecentOrders orders={safeOrders} />
+        <LowStock products={safeProducts} />
       </div>
     </PageContainer>
   );

@@ -33,7 +33,7 @@ export default function LoginPage() {
 
       dispatch(setCredentials(user));
       router.push("/dashboard");
-    } catch (err) {
+    } catch  {
       setServerError("Invalid email or password");
     }
   };

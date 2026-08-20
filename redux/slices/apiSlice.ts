@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Product, Order, Customer } from "../../types";
 
 interface User {
   id: string;
@@ -27,10 +28,7 @@ export const apiSlice = createApi({
           return { error: result.error };
         }
 
-
-
-
-const users = result.data as (User & { password: string })[];
+        const users = result.data as (User & { password: string })[];
 
         if (users.length === 0) {
           return {
@@ -40,12 +38,29 @@ const users = result.data as (User & { password: string })[];
 
         const { id, email: userEmail, name, role } = users[0];
         return { data: { id, email: userEmail, name, role } };
-
-
-
       },
+    }),
+
+    getProducts: builder.query<Product[], void>({
+      query: () => "/products",
+      providesTags: ["Product"],
+    }),
+
+    getOrders: builder.query<Order[], void>({
+      query: () => "/orders",
+      providesTags: ["Order"],
+    }),
+
+    getCustomers: builder.query<Customer[], void>({
+      query: () => "/customers",
+      providesTags: ["Customer"],
     }),
   }),
 });
 
-export const { useLoginMutation } = apiSlice;
+export const {
+  useLoginMutation,
+  useGetProductsQuery,
+  useGetOrdersQuery,
+  useGetCustomersQuery,
+} = apiSlice;
