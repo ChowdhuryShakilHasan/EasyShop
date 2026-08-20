@@ -55,6 +55,15 @@ export const apiSlice = createApi({
       query: () => "/customers",
       providesTags: ["Customer"],
     }),
+
+    addProduct: builder.mutation<Product, Omit<Product, "id">>({
+      query: (newProduct) => ({
+        url: "/products",
+        method: "POST",
+        body: { ...newProduct, id: Date.now().toString() },
+      }),
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
@@ -63,4 +72,5 @@ export const {
   useGetProductsQuery,
   useGetOrdersQuery,
   useGetCustomersQuery,
+  useAddProductMutation,
 } = apiSlice;
