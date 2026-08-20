@@ -15,9 +15,9 @@ export default function PageContainer({
     <div className="p-4 md:p-6">
       <Breadcrumbs />
 
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
         <div>
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
             {title}
           </h1>
           {subtitle && (

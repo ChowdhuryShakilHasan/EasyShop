@@ -38,29 +38,33 @@ export default function DashboardPage() {
   return (
     <PageContainer title="Dashboard" subtitle="Overview of your store">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <KpiCard
+                <KpiCard
           label="Total Revenue"
           value={`$${totalRevenue.toFixed(2)}`}
           trend={12}
           icon={DollarSign}
+          color="blue"
         />
         <KpiCard
           label="Total Orders"
           value={totalOrders.toString()}
           trend={8}
           icon={ShoppingCart}
+          color="orange"
         />
         <KpiCard
           label="Total Customers"
           value={totalCustomers.toString()}
           trend={5}
           icon={Users}
+          color="emerald"
         />
         <KpiCard
           label="Avg. Order Value"
           value={`$${avgOrderValue.toFixed(2)}`}
           trend={-3}
           icon={Receipt}
+          color="violet"
         />
       </div>
 

@@ -29,7 +29,7 @@ export default function ProductsPage() {
   }, [searchInput]);
 
    const safeProducts = useMemo(() => products ?? [], [products]);
-   
+
   const categories = useMemo(
     () => Array.from(new Set(safeProducts.map((p) => p.category))),
     [safeProducts]
@@ -86,7 +86,7 @@ export default function ProductsPage() {
       action={
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 bg-indigo-600 text-white rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-indigo-700 transition-colors"
+          className="flex items-center gap-2 bg-blue-600 text-white rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/25"
         >
           <Plus size={16} />
           Add Product
@@ -94,8 +94,17 @@ export default function ProductsPage() {
       }
     >
     
+
+
+
+
+
+
+
+
+      {/* Toolbar */}
       <div className="flex flex-col sm:flex-row gap-3 mb-4">
-        <div className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-3 py-2 flex-1">
+        <div className="flex items-center gap-2 bg-white border border-gray-300 rounded-xl px-3 py-2.5 flex-1 focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-blue-600 transition-shadow">
           <Search size={16} className="text-gray-400" />
           <input
             type="text"
@@ -115,7 +124,7 @@ export default function ProductsPage() {
             setCategoryFilter(e.target.value);
             setPage(1);
           }}
-          className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
+          className="border border-gray-300 rounded-xl px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-shadow"
         >
           <option value="all">All Categories</option>
           {categories.map((c) => (
@@ -131,7 +140,7 @@ export default function ProductsPage() {
             setStatusFilter(e.target.value);
             setPage(1);
           }}
-          className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
+          className="border border-gray-300 rounded-xl px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-shadow"
         >
           <option value="all">All Statuses</option>
           <option value="active">Active</option>
@@ -139,8 +148,15 @@ export default function ProductsPage() {
         </select>
       </div>
 
+
+
+
+
+
+
+
    
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
@@ -177,17 +193,24 @@ export default function ProductsPage() {
                   <td className="px-4 py-3 text-gray-600">{p.category}</td>
                   <td className="px-4 py-3 text-gray-600">${p.price.toFixed(2)}</td>
                   <td className="px-4 py-3 text-gray-600">{p.stock}</td>
+
+
+
                   <td className="px-4 py-3">
                     <span
-                      className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${
                         p.status === "active"
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-emerald-100 text-emerald-700"
                           : "bg-gray-100 text-gray-600"
                       }`}
                     >
                       {p.status}
                     </span>
                   </td>
+
+
+
+
                 </tr>
               ))
             )}

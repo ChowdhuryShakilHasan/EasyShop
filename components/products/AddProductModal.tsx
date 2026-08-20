@@ -68,7 +68,7 @@ export default function AddProductModal({
             <input
               {...register("name")}
               placeholder="e.g. Wireless Mouse"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
             />
             {errors.name && (
               <p className="text-xs text-red-600 mt-1">{errors.name.message}</p>
@@ -82,7 +82,7 @@ export default function AddProductModal({
             <select
               {...register("category")}
               defaultValue=""
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow bg-white"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow bg-white"
             >
               <option value="" disabled>
                 Select a category
@@ -107,7 +107,7 @@ export default function AddProductModal({
                 type="number"
                 step="0.01"
                 placeholder="0.00"
-                className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
               />
               {errors.price && (
                 <p className="text-xs text-red-600 mt-1">{errors.price.message}</p>
@@ -122,7 +122,7 @@ export default function AddProductModal({
                 {...register("stock", { valueAsNumber: true })}
                 type="number"
                 placeholder="0"
-                className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow"
+                className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
               />
               {errors.stock && (
                 <p className="text-xs text-red-600 mt-1">{errors.stock.message}</p>
@@ -136,7 +136,7 @@ export default function AddProductModal({
             </label>
             <select
               {...register("status")}
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-shadow bg-white"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow bg-white"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -158,7 +158,7 @@ export default function AddProductModal({
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 bg-indigo-600 text-white rounded-xl py-2.5 text-sm font-medium hover:bg-indigo-700 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 bg-blue-600 text-white rounded-xl py-2.5 text-sm font-medium hover:bg-blue-700 disabled:opacity-60 transition-colors flex items-center justify-center gap-2"
             >
               {isLoading && <Loader2 size={16} className="animate-spin" />}
               {isLoading ? "Adding..." : "Add Product"}

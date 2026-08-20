@@ -21,16 +21,16 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   const initial = user?.name?.charAt(0).toUpperCase() ?? "?";
 
   return (
-    <header className="h-16 flex items-center justify-between px-4 md:px-6 border-b border-gray-200 bg-white sticky top-0 z-20">
+    <header className="h-16 flex items-center justify-between px-4 md:px-6 border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-20">
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
         >
           <Menu size={20} />
         </button>
 
-        <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2 w-64">
+        <div className="hidden sm:flex items-center gap-2 bg-gray-100 rounded-xl px-3 py-2 w-64 focus-within:ring-2 focus-within:ring-blue-600 focus-within:bg-white transition-all">
           <Search size={16} className="text-gray-400" />
           <input
             type="text"
@@ -40,38 +40,38 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <button className="p-2 rounded-lg hover:bg-gray-100 relative">
+      <div className="flex items-center gap-3">
+        <button className="p-2 rounded-lg hover:bg-gray-100 transition-colors relative">
           <Bell size={20} className="text-gray-600" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-orange-500 rounded-full ring-2 ring-white" />
         </button>
 
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 pl-1 pr-2 py-1 rounded-xl hover:bg-gray-100 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-semibold">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center text-sm font-semibold shadow-sm">
               {initial}
             </div>
             <ChevronDown size={16} className="text-gray-500" />
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-30">
-              <div className="px-4 py-2 border-b border-gray-100">
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-xl py-1 z-30">
+              <div className="px-4 py-2.5 border-b border-gray-100">
                 <p className="text-sm font-medium text-gray-900">{user?.name}</p>
-                <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
+                <p className="text-xs text-orange-600 capitalize font-medium">{user?.role}</p>
               </div>
-              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                 Profile
               </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                 Settings
               </button>
               <button
                 onClick={handleLogout}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
               >
                 Logout
               </button>
