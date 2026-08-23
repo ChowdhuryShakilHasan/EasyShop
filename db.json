@@ -41,7 +41,7 @@
       "name": "Bluetooth Speaker",
       "category": "Electronics",
       "price": 49.99,
-      "stock": 5,
+      "stock": 9,
       "status": "active",
       "image": ""
     },
@@ -152,6 +152,15 @@
       "status": "active",
       "image": "",
       "id": "acVsRMKTXuA"
+    },
+    {
+      "name": "keyboard",
+      "category": "Electronics",
+      "price": 2,
+      "stock": 30,
+      "status": "active",
+      "image": "",
+      "id": "pOAZLUCabbY"
     }
   ],
   "orders": [
