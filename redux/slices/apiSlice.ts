@@ -13,6 +13,11 @@ interface LoginRequest {
   password: string;
 }
 
+interface UpdateOrderStatusRequest {
+  id: string;
+  orderStatus: Order["orderStatus"];
+}
+
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
@@ -81,6 +86,29 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Product"],
     }),
+
+    getOrderById: builder.query<Order, string>({
+      query: (id) => `/orders/${id}`,
+      providesTags: ["Order"],
+    }),
+
+    updateOrderStatus: builder.mutation<Order, UpdateOrderStatusRequest>({
+      async queryFn(arg, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery(`/orders/${arg.id}`);
+        if (result.error) return { error: result.error };
+
+        const order = result.data as Order;
+        const patched = await baseQuery({
+          url: `/orders/${arg.id}`,
+          method: "PUT",
+          body: { ...order, orderStatus: arg.orderStatus },
+        });
+
+        if (patched.error) return { error: patched.error };
+        return { data: patched.data as Order };
+      },
+      invalidatesTags: ["Order"],
+    }),
   }),
 });
 
@@ -92,4 +120,6 @@ export const {
   useAddProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
+  useGetOrderByIdQuery,
+  useUpdateOrderStatusMutation,
 } = apiSlice;
