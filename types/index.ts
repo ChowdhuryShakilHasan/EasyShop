@@ -26,9 +26,9 @@ export interface Order {
     | "shipped"
     | "delivered"
     | "cancelled";
+  shippingAddress: string;
   items: OrderItem[];
 }
-
 export interface Customer {
   id: string;
   name: string;

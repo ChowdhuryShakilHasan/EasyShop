@@ -92,6 +92,24 @@ export const apiSlice = createApi({
       providesTags: ["Order"],
     }),
 
+    updateStock: builder.mutation<Product, { id: string; stock: number }>({
+      async queryFn({ id, stock }, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery(`/products/${id}`);
+        if (result.error) return { error: result.error };
+
+        const product = result.data as Product;
+        const patched = await baseQuery({
+          url: `/products/${id}`,
+          method: "PUT",
+          body: { ...product, stock },
+        });
+
+        if (patched.error) return { error: patched.error };
+        return { data: patched.data as Product };
+      },
+      invalidatesTags: ["Product"],
+    }),
+
     updateOrderStatus: builder.mutation<Order, UpdateOrderStatusRequest>({
       async queryFn(arg, _api, _extraOptions, baseQuery) {
         const result = await baseQuery(`/orders/${arg.id}`);
@@ -122,4 +140,5 @@ export const {
   useDeleteProductMutation,
   useGetOrderByIdQuery,
   useUpdateOrderStatusMutation,
+  useUpdateStockMutation,
 } = apiSlice;
