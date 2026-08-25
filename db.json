@@ -334,10 +334,10 @@
   "users": [
     {
       "id": "1",
+      "name": "Admin-sourov",
       "email": "admin@easyshop.com",
-      "password": "admin123",
-      "name": "Admin User",
-      "role": "admin"
+      "role": "admin",
+      "password": "admin123"
     },
     {
       "id": "2",

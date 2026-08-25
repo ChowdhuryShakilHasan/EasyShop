@@ -13,6 +13,14 @@ interface LoginRequest {
   password: string;
 }
 
+export interface StaffUser {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: "admin" | "staff";
+}
+
 interface UpdateOrderStatusRequest {
   id: string;
   orderStatus: Order["orderStatus"];
@@ -21,7 +29,7 @@ interface UpdateOrderStatusRequest {
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
-  tagTypes: ["Product", "Order", "Customer"],
+  tagTypes: ["Product", "Order", "Customer", "Staff"],
   endpoints: (builder) => ({
     login: builder.mutation<User, LoginRequest>({
       async queryFn({ email, password }, _api, _extraOptions, baseQuery) {
@@ -87,12 +95,49 @@ export const apiSlice = createApi({
       invalidatesTags: ["Product"],
     }),
 
+
+
+
     getOrderById: builder.query<Order, string>({
       query: (id) => `/orders/${id}`,
       providesTags: ["Order"],
     }),
 
+    getStaff: builder.query<StaffUser[], void>({
+      query: () => "/users",
+      providesTags: ["Staff"],
+    }),
+
+    addStaff: builder.mutation<StaffUser, Omit<StaffUser, "id">>({
+      query: (newStaff) => ({
+        url: "/users",
+        method: "POST",
+        body: { ...newStaff, id: Date.now().toString() },
+      }),
+      invalidatesTags: ["Staff"],
+    }),
+
+    updateStaff: builder.mutation<StaffUser, StaffUser>({
+      query: (staff) => ({
+        url: `/users/${staff.id}`,
+        method: "PUT",
+        body: staff,
+      }),
+      invalidatesTags: ["Staff"],
+    }),
+
+    deleteStaff: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Staff"],
+    }),
+
     updateStock: builder.mutation<Product, { id: string; stock: number }>({
+
+
+
       async queryFn({ id, stock }, _api, _extraOptions, baseQuery) {
         const result = await baseQuery(`/products/${id}`);
         if (result.error) return { error: result.error };
@@ -130,6 +175,7 @@ export const apiSlice = createApi({
   }),
 });
 
+
 export const {
   useLoginMutation,
   useGetProductsQuery,
@@ -141,4 +187,8 @@ export const {
   useGetOrderByIdQuery,
   useUpdateOrderStatusMutation,
   useUpdateStockMutation,
+  useGetStaffQuery,
+  useAddStaffMutation,
+  useUpdateStaffMutation,
+  useDeleteStaffMutation,
 } = apiSlice;
