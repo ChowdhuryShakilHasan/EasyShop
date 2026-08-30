@@ -191,8 +191,11 @@ export default function ProductsPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-        <table className="w-full text-sm">
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+        <table className="w-full text-sm min-w-[640px]">
+
+
+
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-4 py-3 w-10">
