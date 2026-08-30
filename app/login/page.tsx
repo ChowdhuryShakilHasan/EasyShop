@@ -188,7 +188,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <h1 className="text-2xl font-bold text-gray-900 mb-1 tracking-tight text-center">
+            <h1 className="text-2xl font-bold app-text-primary mb-1 tracking-tight text-center">
               Welcome back
             </h1>
             <p className="text-sm text-gray-500 mb-6 text-center">
@@ -235,7 +235,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:app-text-secondary"
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -246,7 +246,7 @@ export default function LoginPage() {
               </div>
 
               <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                <label className="flex items-center gap-2 text-sm app-text-secondary cursor-pointer">
                   <input
                     type="checkbox"
                     {...register("remember")}

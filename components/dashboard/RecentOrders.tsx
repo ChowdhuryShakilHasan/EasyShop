@@ -14,8 +14,8 @@ export default function RecentOrders({ orders }: { orders: Order[] }) {
     .slice(0, 5);
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">
+    <div className="app-card p-5">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">
         Recent Orders
       </h3>
       <div className="space-y-3">
@@ -25,11 +25,11 @@ export default function RecentOrders({ orders }: { orders: Order[] }) {
             className="flex items-center justify-between text-sm"
           >
             <div>
-              <p className="font-medium text-gray-900">#{order.id}</p>
+              <p className="font-medium app-text-primary">#{order.id}</p>
               <p className="text-gray-500 text-xs">{order.date}</p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="font-medium text-gray-900">
+              <span className="font-medium app-text-primary">
                 ${order.total.toFixed(2)}
               </span>
               <span

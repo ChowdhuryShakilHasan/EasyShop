@@ -63,15 +63,15 @@ export default function InventoryPage() {
         />
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className="app-card overflow-x-auto">
         <table className="w-full text-sm min-w-[560px]">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="app-table-head">
             <tr>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Product</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Category</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Current Stock</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Status</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Action</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Product</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Category</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Current Stock</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Status</th>
+              <th className="text-right px-4 py-3 font-medium app-text-secondary">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -83,13 +83,13 @@ export default function InventoryPage() {
               </tr>
             ) : (
               filtered.map((p) => (
-                <tr key={p.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
-                  <td className="px-4 py-3 font-medium text-gray-900 flex items-center gap-2">
+                <tr key={p.id} className="app-table-row hover:bg-gray-50/50">
+                  <td className="px-4 py-3 font-medium app-text-primary flex items-center gap-2">
                     <Package size={15} className="text-gray-400" />
                     {p.name}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">{p.category}</td>
-                  <td className="px-4 py-3 font-medium text-gray-900">{p.stock}</td>
+                  <td className="px-4 py-3 app-text-secondary">{p.category}</td>
+                  <td className="px-4 py-3 font-medium app-text-primary">{p.stock}</td>
                   <td className="px-4 py-3">
                     <span
                       className={`px-2.5 py-1 rounded-full text-xs font-medium ${getStockBadge(p.stock)}`}

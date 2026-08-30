@@ -83,7 +83,7 @@ export default function OrdersPage() {
             className={`px-3.5 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
               activeTab === tab.value
                 ? "bg-blue-600 text-white"
-                : "bg-white border border-gray-300 text-gray-600 hover:bg-gray-50"
+                : "bg-white border border-gray-300 app-text-secondary hover:bg-gray-50"
             }`}
           >
             {tab.label}
@@ -107,16 +107,16 @@ export default function OrdersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className="app-card overflow-x-auto">
         <table className="w-full text-sm min-w-[640px]">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="app-table-head">
             <tr>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Order ID</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Customer</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Date</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Total</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Payment</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Status</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Order ID</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Customer</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Date</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Total</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Payment</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -128,15 +128,15 @@ export default function OrdersPage() {
               </tr>
             ) : (
               paginated.map((o) => (
-                <tr key={o.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
+                <tr key={o.id} className="app-table-row hover:bg-gray-50/50">
                   <td className="px-4 py-3 font-medium text-blue-600">
                     <Link href={`/orders/${o.id}`} className="hover:underline">
                       #{o.id}
                     </Link>
                   </td>
-                  <td className="px-4 py-3 text-gray-900">{getCustomerName(o.customerId)}</td>
-                  <td className="px-4 py-3 text-gray-600">{o.date}</td>
-                  <td className="px-4 py-3 font-medium text-gray-900">${o.total.toFixed(2)}</td>
+                  <td className="px-4 py-3 app-text-primary">{getCustomerName(o.customerId)}</td>
+                  <td className="px-4 py-3 app-text-secondary">{o.date}</td>
+                  <td className="px-4 py-3 font-medium app-text-primary">${o.total.toFixed(2)}</td>
                   <td className="px-4 py-3">
                     <span
                       className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${
@@ -163,7 +163,7 @@ export default function OrdersPage() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
+      <div className="flex items-center justify-between mt-4 text-sm app-text-secondary">
         <span>
           Page {page} of {totalPages} ({filtered.length} results)
         </span>

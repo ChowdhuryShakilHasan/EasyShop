@@ -36,7 +36,7 @@ export default function KpiCard({
   const c = colorMap[color];
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-5 relative overflow-hidden hover:shadow-md transition-shadow">
+    <div className="app-card p-5 relative overflow-hidden hover:shadow-md transition-shadow">
       <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${c.bar}`} />
 
       <div className="flex items-center justify-between mb-3">
@@ -46,7 +46,7 @@ export default function KpiCard({
         </div>
       </div>
 
-      <p className="text-2xl font-bold text-gray-900 mb-1 tracking-tight">{value}</p>
+      <p className="text-2xl font-bold app-text-primary mb-1 tracking-tight">{value}</p>
 
       <div
         className={`flex items-center gap-1 text-xs font-medium ${

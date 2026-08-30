@@ -66,13 +66,13 @@ export default function CustomerProfilePage({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left: profile card */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="app-card p-5">
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center text-xl font-semibold mb-4">
             {customer.name.charAt(0).toUpperCase()}
           </div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">{customer.name}</h2>
+          <h2 className="text-lg font-semibold app-text-primary mb-3">{customer.name}</h2>
 
-          <div className="space-y-2.5 text-sm text-gray-600">
+          <div className="space-y-2.5 text-sm app-text-secondary">
             <div className="flex items-center gap-2">
               <Mail size={14} className="text-gray-400" />
               {customer.email}
@@ -91,23 +91,23 @@ export default function CustomerProfilePage({
         {/* Right: stats + orders */}
         <div className="lg:col-span-2 space-y-4">
           <div className="grid grid-cols-3 gap-3">
-            <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center">
+            <div className="app-card p-4 text-center">
               <p className="text-xs text-gray-500 mb-1">Total Orders</p>
-              <p className="text-xl font-bold text-gray-900">{customerOrders.length}</p>
+              <p className="text-xl font-bold app-text-primary">{customerOrders.length}</p>
             </div>
-            <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center">
+            <div className="app-card p-4 text-center">
               <p className="text-xs text-gray-500 mb-1">Total Spent</p>
-              <p className="text-xl font-bold text-gray-900">${totalSpent.toFixed(2)}</p>
+              <p className="text-xl font-bold app-text-primary">${totalSpent.toFixed(2)}</p>
             </div>
-            <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center">
+            <div className="app-card p-4 text-center">
               <p className="text-xs text-gray-500 mb-1">Avg. Order</p>
-              <p className="text-xl font-bold text-gray-900">${avgOrderValue.toFixed(2)}</p>
+              <p className="text-xl font-bold app-text-primary">${avgOrderValue.toFixed(2)}</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="app-card overflow-hidden">
             <div className="px-5 py-4 border-b border-gray-100">
-              <h3 className="text-sm font-semibold text-gray-900">Order History</h3>
+              <h3 className="text-sm font-semibold app-text-primary">Order History</h3>
             </div>
             {customerOrders.length === 0 ? (
               <p className="px-5 py-6 text-sm text-gray-400 text-center">
@@ -126,8 +126,8 @@ export default function CustomerProfilePage({
                           #{o.id}
                         </Link>
                       </td>
-                      <td className="px-5 py-3 text-gray-600">{o.date}</td>
-                      <td className="px-5 py-3 font-medium text-gray-900">
+                      <td className="px-5 py-3 app-text-secondary">{o.date}</td>
+                      <td className="px-5 py-3 font-medium app-text-primary">
                         ${o.total.toFixed(2)}
                       </td>
                       <td className="px-5 py-3 text-right">

@@ -25,11 +25,11 @@ export default function StaffPage() {
   if (user?.role !== "admin") {
     return (
       <PageContainer title="Staff">
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col items-center text-center">
+        <div className="app-card p-8 flex flex-col items-center text-center">
           <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-3">
             <ShieldAlert size={22} className="text-red-600" />
           </div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-1">
+          <h2 className="text-lg font-semibold app-text-primary mb-1">
             Access restricted
           </h2>
           <p className="text-sm text-gray-500">
@@ -73,14 +73,14 @@ export default function StaffPage() {
         </button>
       }
     >
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className="app-card overflow-x-auto">
         <table className="w-full text-sm min-w-[500px]">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="app-table-head">
             <tr>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Name</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Email</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Role</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Actions</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Name</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Email</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Role</th>
+              <th className="text-right px-4 py-3 font-medium app-text-secondary">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -92,20 +92,20 @@ export default function StaffPage() {
               </tr>
             ) : (
               safeStaff.map((s) => (
-                <tr key={s.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
-                  <td className="px-4 py-3 font-medium text-gray-900">
+                <tr key={s.id} className="app-table-row hover:bg-gray-50/50">
+                  <td className="px-4 py-3 font-medium app-text-primary">
                     {s.name}
                     {s.id === user?.id && (
                       <span className="ml-2 text-xs text-blue-600 font-normal">(You)</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">{s.email}</td>
+                  <td className="px-4 py-3 app-text-secondary">{s.email}</td>
                   <td className="px-4 py-3">
                     <span
                       className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${
                         s.role === "admin"
                           ? "bg-blue-100 text-blue-700"
-                          : "bg-gray-100 text-gray-600"
+                          : "bg-gray-100 app-text-secondary"
                       }`}
                     >
                       {s.role}

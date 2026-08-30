@@ -32,7 +32,7 @@ export default function DeleteConfirmModal({
           <AlertTriangle size={22} className="text-red-600" />
         </div>
 
-        <h2 className="text-lg font-semibold text-gray-900 mb-1">
+        <h2 className="text-lg font-semibold app-text-primary mb-1">
           Delete product?
         </h2>
         <p className="text-sm text-gray-500 mb-6">

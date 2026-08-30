@@ -61,15 +61,20 @@ export default function AddProductModal({
 
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl p-6">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-semibold text-gray-900 tracking-tight">
+          <h2 className="text-lg font-semibold app-text-primary tracking-tight">
             Add Product
           </h2>
+
+
           <button
             onClick={onClose}
+            aria-label="Close dialog"
             className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
           >
             <X size={18} />
           </button>
+
+
         </div>
 
 
@@ -201,6 +206,8 @@ export default function AddProductModal({
           )}
 
           <div className="flex gap-3 pt-2">
+           
+           
             <button
               type="button"
               onClick={onClose}
@@ -208,6 +215,8 @@ export default function AddProductModal({
             >
               Cancel
             </button>
+
+
             <button
               type="submit"
               disabled={isLoading}

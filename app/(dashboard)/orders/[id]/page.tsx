@@ -67,8 +67,8 @@ export default function OrderDetailPage({
         {/* Left: items + stepper */}
         <div className="lg:col-span-2 space-y-4">
           {/* Status stepper */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+          <div className="app-card p-5">
+            <h3 className="text-sm font-semibold app-text-primary mb-4">
               Order Status
             </h3>
 
@@ -95,7 +95,7 @@ export default function OrderDetailPage({
                         </div>
                         <span
                           className={`text-xs mt-1.5 capitalize ${
-                            isDone ? "text-gray-900 font-medium" : "text-gray-400"
+                            isDone ? "app-text-primary font-medium" : "text-gray-400"
                           }`}
                         >
                           {step}
@@ -136,17 +136,17 @@ export default function OrderDetailPage({
           </div>
 
           {/* Items */}
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="app-card overflow-hidden">
             <div className="px-5 py-4 border-b border-gray-100">
-              <h3 className="text-sm font-semibold text-gray-900">Items</h3>
+              <h3 className="text-sm font-semibold app-text-primary">Items</h3>
             </div>
             <table className="w-full text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-5 py-2.5 font-medium text-gray-600">Product</th>
-                  <th className="text-left px-5 py-2.5 font-medium text-gray-600">Qty</th>
-                  <th className="text-left px-5 py-2.5 font-medium text-gray-600">Price</th>
-                  <th className="text-right px-5 py-2.5 font-medium text-gray-600">Subtotal</th>
+                  <th className="text-left px-5 py-2.5 font-medium app-text-secondary">Product</th>
+                  <th className="text-left px-5 py-2.5 font-medium app-text-secondary">Qty</th>
+                  <th className="text-left px-5 py-2.5 font-medium app-text-secondary">Price</th>
+                  <th className="text-right px-5 py-2.5 font-medium app-text-secondary">Subtotal</th>
                 </tr>
               </thead>
               <tbody>
@@ -154,12 +154,12 @@ export default function OrderDetailPage({
                   const product = getProduct(item.productId);
                   return (
                     <tr key={i} className="border-t border-gray-100">
-                      <td className="px-5 py-3 text-gray-900">
+                      <td className="px-5 py-3 app-text-primary">
                         {product?.name ?? "Unknown product"}
                       </td>
-                      <td className="px-5 py-3 text-gray-600">{item.quantity}</td>
-                      <td className="px-5 py-3 text-gray-600">${item.price.toFixed(2)}</td>
-                      <td className="px-5 py-3 text-right font-medium text-gray-900">
+                      <td className="px-5 py-3 app-text-secondary">{item.quantity}</td>
+                      <td className="px-5 py-3 app-text-secondary">${item.price.toFixed(2)}</td>
+                      <td className="px-5 py-3 text-right font-medium app-text-primary">
                         ${(item.price * item.quantity).toFixed(2)}
                       </td>
                     </tr>
@@ -171,7 +171,7 @@ export default function OrderDetailPage({
                   <td colSpan={3} className="px-5 py-3 text-right font-semibold text-gray-700">
                     Total
                   </td>
-                  <td className="px-5 py-3 text-right font-bold text-gray-900">
+                  <td className="px-5 py-3 text-right font-bold app-text-primary">
                     ${order.total.toFixed(2)}
                   </td>
                 </tr>
@@ -182,25 +182,25 @@ export default function OrderDetailPage({
 
         {/* Right: customer + shipping */}
         <div className="space-y-4">
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
-            <h3 className="text-sm font-semibold text-gray-900 mb-3">Customer</h3>
-            <p className="text-sm font-medium text-gray-900">
+          <div className="app-card p-5">
+            <h3 className="text-sm font-semibold app-text-primary mb-3">Customer</h3>
+            <p className="text-sm font-medium app-text-primary">
               {customer?.name ?? "Unknown"}
             </p>
             <p className="text-sm text-gray-500">{customer?.email}</p>
             <p className="text-sm text-gray-500">{customer?.phone}</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
-            <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-1.5">
+          <div className="app-card p-5">
+            <h3 className="text-sm font-semibold app-text-primary mb-3 flex items-center gap-1.5">
               <MapPin size={15} className="text-blue-600" />
               Shipping Address
             </h3>
-            <p className="text-sm text-gray-600">{order.shippingAddress}</p>
+            <p className="text-sm app-text-secondary">{order.shippingAddress}</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
-            <h3 className="text-sm font-semibold text-gray-900 mb-3">Payment</h3>
+          <div className="app-card p-5">
+            <h3 className="text-sm font-semibold app-text-primary mb-3">Payment</h3>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-500">Status</span>
               <span

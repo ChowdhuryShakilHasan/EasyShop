@@ -7,8 +7,8 @@ export default function LowStock({ products }: { products: Product[] }) {
     .sort((a, b) => a.stock - b.stock);
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">
+    <div className="app-card p-5">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">
         Low Stock Alerts
       </h3>
 
@@ -23,7 +23,7 @@ export default function LowStock({ products }: { products: Product[] }) {
             >
               <div className="flex items-center gap-2">
                 <AlertTriangle size={16} className="text-orange-500" />
-                <span className="font-medium text-gray-900">{p.name}</span>
+                <span className="font-medium app-text-primary">{p.name}</span>
               </div>
               <span
                 className={`text-xs font-medium ${

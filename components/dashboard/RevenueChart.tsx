@@ -23,8 +23,8 @@ export default function RevenueChart({ orders }: { orders: Order[] }) {
     .sort((a, b) => a.date.localeCompare(b.date));
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">
+    <div className="app-card p-5">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">
         Revenue Over Time
       </h3>
       <ResponsiveContainer width="100%" height={260}>

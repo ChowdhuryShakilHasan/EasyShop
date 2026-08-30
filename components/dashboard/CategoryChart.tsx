@@ -17,8 +17,8 @@ export default function CategoryChart({ products }: { products: Product[] }) {
   }));
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">
+    <div className="app-card p-5">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">
         Products by Category
       </h3>
       <ResponsiveContainer width="100%" height={260}>

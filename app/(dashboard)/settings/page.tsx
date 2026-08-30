@@ -51,7 +51,7 @@ function TabButton({
       className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
         active
           ? "bg-blue-600 text-white"
-          : "bg-white border border-gray-300 text-gray-600 hover:bg-gray-50"
+          : "bg-white border border-gray-300 app-text-secondary hover:bg-gray-50"
       }`}
     >
       <Icon size={15} />
@@ -119,8 +119,8 @@ function ProfileTab() {
 
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-5 max-w-lg">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">Profile Information</h3>
+    <div className="app-card p-5 max-w-lg">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">Profile Information</h3>
 
       <div className="space-y-4">
         <div>
@@ -184,8 +184,8 @@ function StoreInfoTab() {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-5 max-w-lg">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">Store Information</h3>
+    <div className="app-card p-5 max-w-lg">
+      <h3 className="text-sm font-semibold app-text-primary mb-4">Store Information</h3>
 
       <div className="space-y-4">
         <div>
@@ -249,9 +249,9 @@ function Toggle({
   description: string;
 }) {
   return (
-    <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+    <div className="flex items-center justify-between py-3 app-table-row">
       <div>
-        <p className="text-sm font-medium text-gray-900">{label}</p>
+        <p className="text-sm font-medium app-text-primary">{label}</p>
         <p className="text-xs text-gray-500">{description}</p>
       </div>
       <button
@@ -286,8 +286,8 @@ function NotificationsTab() {
 
 
 
-    <div className="bg-white rounded-2xl border border-gray-200 p-5 max-w-lg">
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">Notification Preferences</h3>
+    <div className="app-card p-5 max-w-lg">
+      <h3 className="text-sm font-semibold app-text-primary mb-2">Notification Preferences</h3>
 
       <div>
         <Toggle

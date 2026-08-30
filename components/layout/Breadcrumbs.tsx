@@ -11,8 +11,8 @@ export default function Breadcrumbs() {
   if (segments.length === 0) return null;
 
   return (
-    <nav className="flex items-center text-sm text-gray-500 mb-4">
-      <Link href="/dashboard" className="hover:text-gray-700">
+    <nav className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+      <Link href="/dashboard" className="hover:text-gray-700 dark:hover:text-gray-200">
         Home
       </Link>
 
@@ -24,11 +24,14 @@ export default function Breadcrumbs() {
 
         return (
           <span key={href} className="flex items-center">
-            <ChevronRight size={14} className="mx-1 text-gray-400" />
+
+
+
+             <ChevronRight size={14} className="mx-1 text-gray-400 dark:app-text-secondary" />
             {isLast ? (
-              <span className="text-gray-900 font-medium">{label}</span>
+              <span className="app-text-primary dark:text-gray-100 font-medium">{label}</span>
             ) : (
-              <Link href={href} className="hover:text-gray-700">
+              <Link href={href} className="hover:text-gray-700 dark:hover:text-gray-200">
                 {label}
               </Link>
             )}

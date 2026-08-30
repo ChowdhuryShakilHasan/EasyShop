@@ -76,9 +76,9 @@ export default function ReportsPage() {
       }
     >
       {/* Date range filter */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-4 mb-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+      <div className="app-card p-4 mb-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600 font-medium">From</label>
+          <label className="text-sm app-text-secondary font-medium">From</label>
           <input
             type="date"
             value={startDate}
@@ -87,7 +87,7 @@ export default function ReportsPage() {
           />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600 font-medium">To</label>
+          <label className="text-sm app-text-secondary font-medium">To</label>
           <input
             type="date"
             value={endDate}
@@ -99,7 +99,7 @@ export default function ReportsPage() {
 
       {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-        <div className="bg-white rounded-2xl border border-gray-200 p-5 relative overflow-hidden">
+        <div className="app-card p-5 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-blue-800" />
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-500 font-medium">Total Revenue</span>
@@ -107,10 +107,10 @@ export default function ReportsPage() {
               <DollarSign size={18} />
             </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">${totalRevenue.toFixed(2)}</p>
+          <p className="text-2xl font-bold app-text-primary">${totalRevenue.toFixed(2)}</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-5 relative overflow-hidden">
+        <div className="app-card p-5 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-orange-600" />
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-500 font-medium">Orders in Range</span>
@@ -118,10 +118,10 @@ export default function ReportsPage() {
               <ShoppingCart size={18} />
             </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">{totalOrders}</p>
+          <p className="text-2xl font-bold app-text-primary">{totalOrders}</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-5 relative overflow-hidden">
+        <div className="app-card p-5 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-emerald-600" />
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-500 font-medium">Avg. Order Value</span>
@@ -129,14 +129,14 @@ export default function ReportsPage() {
               <TrendingUp size={18} />
             </div>
           </div>
-          <p className="text-2xl font-bold text-gray-900">${avgOrderValue.toFixed(2)}</p>
+          <p className="text-2xl font-bold app-text-primary">${avgOrderValue.toFixed(2)}</p>
         </div>
       </div>
 
       
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+      <div className="app-card overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold app-text-primary">
             Orders in Selected Range ({filteredOrders.length})
           </h3>
         </div>
@@ -144,11 +144,11 @@ export default function ReportsPage() {
         <table className="w-full text-sm min-w-[560px]">
           <thead className="bg-gray-50">
             <tr>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Order ID</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Customer</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Date</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Total</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Status</th>
+              <th className="text-left px-4 py-2.5 font-medium app-text-secondary">Order ID</th>
+              <th className="text-left px-4 py-2.5 font-medium app-text-secondary">Customer</th>
+              <th className="text-left px-4 py-2.5 font-medium app-text-secondary">Date</th>
+              <th className="text-left px-4 py-2.5 font-medium app-text-secondary">Total</th>
+              <th className="text-left px-4 py-2.5 font-medium app-text-secondary">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -161,11 +161,11 @@ export default function ReportsPage() {
             ) : (
               filteredOrders.map((o) => (
                 <tr key={o.id} className="border-t border-gray-100">
-                  <td className="px-4 py-3 font-medium text-gray-900">#{o.id}</td>
-                  <td className="px-4 py-3 text-gray-600">{getCustomerName(o.customerId)}</td>
-                  <td className="px-4 py-3 text-gray-600">{o.date}</td>
-                  <td className="px-4 py-3 font-medium text-gray-900">${o.total.toFixed(2)}</td>
-                  <td className="px-4 py-3 text-gray-600 capitalize">{o.orderStatus}</td>
+                  <td className="px-4 py-3 font-medium app-text-primary">#{o.id}</td>
+                  <td className="px-4 py-3 app-text-secondary">{getCustomerName(o.customerId)}</td>
+                  <td className="px-4 py-3 app-text-secondary">{o.date}</td>
+                  <td className="px-4 py-3 font-medium app-text-primary">${o.total.toFixed(2)}</td>
+                  <td className="px-4 py-3 app-text-secondary capitalize">{o.orderStatus}</td>
                 </tr>
               ))
 

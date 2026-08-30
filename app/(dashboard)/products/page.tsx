@@ -191,12 +191,12 @@ export default function ProductsPage() {
       </div>
 
       {/* Table */}
-    <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+    <div className="app-card overflow-x-auto">
         <table className="w-full text-sm min-w-[640px]">
 
 
 
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="app-table-head">
             <tr>
               <th className="px-4 py-3 w-10">
                 <input
@@ -206,24 +206,24 @@ export default function ProductsPage() {
                   className="rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                 />
               </th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">
                 <button onClick={() => toggleSort("name")} className="flex items-center gap-1">
                   Name <ArrowUpDown size={12} />
                 </button>
               </th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Category</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Category</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">
                 <button onClick={() => toggleSort("price")} className="flex items-center gap-1">
                   Price <ArrowUpDown size={12} />
                 </button>
               </th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">
                 <button onClick={() => toggleSort("stock")} className="flex items-center gap-1">
                   Stock <ArrowUpDown size={12} />
                 </button>
               </th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Status</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Actions</th>
+              <th className="text-left px-4 py-3 font-medium app-text-secondary">Status</th>
+              <th className="text-right px-4 py-3 font-medium app-text-secondary">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -235,7 +235,7 @@ export default function ProductsPage() {
               </tr>
             ) : (
               paginated.map((p) => (
-                <tr key={p.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
+                <tr key={p.id} className="app-table-row hover:bg-gray-50/50">
                   <td className="px-4 py-3">
                     <input
                       type="checkbox"
@@ -244,16 +244,16 @@ export default function ProductsPage() {
                       className="rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                     />
                   </td>
-                  <td className="px-4 py-3 font-medium text-gray-900">{p.name}</td>
-                  <td className="px-4 py-3 text-gray-600">{p.category}</td>
-                  <td className="px-4 py-3 text-gray-600">${p.price.toFixed(2)}</td>
-                  <td className="px-4 py-3 text-gray-600">{p.stock}</td>
+                  <td className="px-4 py-3 font-medium app-text-primary">{p.name}</td>
+                  <td className="px-4 py-3 app-text-secondary">{p.category}</td>
+                  <td className="px-4 py-3 app-text-secondary">${p.price.toFixed(2)}</td>
+                  <td className="px-4 py-3 app-text-secondary">{p.stock}</td>
                   <td className="px-4 py-3">
                     <span
                       className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${
                         p.status === "active"
                           ? "bg-emerald-100 text-emerald-700"
-                          : "bg-gray-100 text-gray-600"
+                          : "bg-gray-100 app-text-secondary"
                       }`}
                     >
                       {p.status}
@@ -261,18 +261,28 @@ export default function ProductsPage() {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-2">
+                     
+                     
+                     
                       <button
                         onClick={() => setEditingProduct(p)}
+                        aria-label={`Edit ${p.name}`}
                         className="p-1.5 rounded-lg text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
                       >
                         <Pencil size={15} />
                       </button>
                       <button
                         onClick={() => setDeletingProduct(p)}
+                        aria-label={`Delete ${p.name}`}
                         className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                       >
                         <Trash2 size={15} />
                       </button>
+
+
+
+
+
                     </div>
                   </td>
                 </tr>
@@ -283,7 +293,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
+      <div className="flex items-center justify-between mt-4 text-sm app-text-secondary">
         <span>
           Page {page} of {totalPages} ({filtered.length} results)
         </span>
@@ -320,7 +330,7 @@ export default function ProductsPage() {
             <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4">
               <Trash2 size={22} className="text-red-600" />
             </div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-1">
+            <h2 className="text-lg font-semibold app-text-primary mb-1">
               Delete {selectedIds.length} products?
             </h2>
             <p className="text-sm text-gray-500 mb-6">

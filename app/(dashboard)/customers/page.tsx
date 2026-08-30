@@ -63,14 +63,14 @@ export default function CustomersPage() {
               <Link
                 key={c.id}
                 href={`/customers/${c.id}`}
-                className="bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-md hover:border-blue-300 transition-all"
+                className="app-card p-5 hover:shadow-md hover:border-blue-300 transition-all"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center font-semibold text-sm">
                     {c.name.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{c.name}</p>
+                    <p className="font-medium app-text-primary">{c.name}</p>
                     <p className="text-xs text-gray-500">{c.email}</p>
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function CustomersPage() {
                   <span className="text-gray-500">
                     {stats.count} order{stats.count !== 1 ? "s" : ""}
                   </span>
-                  <span className="font-medium text-gray-900">
+                  <span className="font-medium app-text-primary">
                     ${stats.totalSpent.toFixed(2)}
                   </span>
                 </div>
