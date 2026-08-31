@@ -4,7 +4,9 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import PageContainer from "../../../components/layout/PageContainer";
+import { TableSkeleton } from "../../../components/ui/Skeleton";
 import { useGetOrdersQuery, useGetCustomersQuery } from "../../../redux/slices/apiSlice";
+
 import { Order } from "../../../types";
 
 const PAGE_SIZE = 5;
@@ -64,10 +66,11 @@ export default function OrdersPage() {
   if (isLoading) {
     return (
       <PageContainer title="Orders" subtitle="Track and manage customer orders">
-        <p className="text-gray-500 text-sm">Loading...</p>
+        <TableSkeleton rows={5} />
       </PageContainer>
     );
   }
+
 
   return (
     <PageContainer title="Orders" subtitle="Track and manage customer orders">

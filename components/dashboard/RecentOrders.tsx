@@ -1,12 +1,5 @@
 import { Order } from "../../types";
-
-const statusStyles: Record<string, string> = {
-  pending: "bg-gray-100 text-gray-700",
-  processing: "bg-yellow-100 text-yellow-700",
-  shipped: "bg-blue-100 text-blue-700",
-  delivered: "bg-green-100 text-green-700",
-  cancelled: "bg-red-100 text-red-700",
-};
+import { orderStatusStyles } from "../../lib/statusStyles";
 
 export default function RecentOrders({ orders }: { orders: Order[] }) {
   const recent = [...orders]
@@ -32,11 +25,16 @@ export default function RecentOrders({ orders }: { orders: Order[] }) {
               <span className="font-medium app-text-primary">
                 ${order.total.toFixed(2)}
               </span>
+
+
               <span
                 className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
-                  statusStyles[order.orderStatus]
+                  orderStatusStyles[order.orderStatus]
                 }`}
               >
+
+
+
                 {order.orderStatus}
               </span>
             </div>

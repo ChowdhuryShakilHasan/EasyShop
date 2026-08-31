@@ -2,6 +2,7 @@
 
 import { DollarSign, ShoppingCart, Users, Receipt } from "lucide-react";
 import PageContainer from "../../../components/layout/PageContainer";
+import { CardSkeleton, TableSkeleton } from "../../../components/ui/Skeleton";
 import KpiCard from "../../../components/dashboard/KpiCard";
 import RevenueChart from "../../../components/dashboard/RevenueChart";
 import CategoryChart from "../../../components/dashboard/CategoryChart";
@@ -21,7 +22,16 @@ export default function DashboardPage() {
   if (ordersLoading || productsLoading || customersLoading) {
     return (
       <PageContainer title="Dashboard" subtitle="Overview of your store">
-        <p className="text-gray-500 text-sm">Loading...</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <TableSkeleton rows={3} />
+          <TableSkeleton rows={3} />
+        </div>
       </PageContainer>
     );
   }

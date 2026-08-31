@@ -1,9 +1,10 @@
 "use client";
 
-import { Search, Bell, ChevronDown, Menu, Sun, Moon } from "lucide-react";
+import { Search, ChevronDown, Menu, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { logout } from "../../redux/slices/authSlice";
 import { RootState } from "../../redux/store";
 import { useTheme } from "../../redux/useTheme";
@@ -66,11 +67,6 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           </button>
         )}
 
-        <button aria-label="Notifications" className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative">
-          <Bell size={20} className="text-gray-600 dark:text-gray-300" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-orange-500 rounded-full ring-2 ring-white dark:ring-slate-900" />
-        </button>
-
 
 
 
@@ -97,12 +93,26 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
                 <p className="text-sm font-medium app-text-primary dark:text-gray-100">{user?.name}</p>
                 <p className="text-xs text-orange-600 capitalize font-medium">{user?.role}</p>
               </div>
-              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+             
+             
+             
+              <Link
+                href="/settings"
+                onClick={() => setDropdownOpen(false)}
+                className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
+              >
                 Profile
-              </button>
-              <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+              </Link>
+              <Link
+                href="/settings"
+                onClick={() => setDropdownOpen(false)}
+                className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
+              >
                 Settings
-              </button>
+              </Link>
+
+
+
               <button
                 onClick={handleLogout}
                 className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
