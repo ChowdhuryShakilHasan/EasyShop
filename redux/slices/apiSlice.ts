@@ -28,7 +28,12 @@ interface UpdateOrderStatusRequest {
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000",
+  }),
+
+
+
   tagTypes: ["Product", "Order", "Customer", "Staff"],
   endpoints: (builder) => ({
     login: builder.mutation<User, LoginRequest>({
